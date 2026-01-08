@@ -1,0 +1,263 @@
+/* === PAPER SKETCH THEME === */
+:root {
+    --bg-color: #fdfbf7;      /* Creamy paper color */
+    --text-color: #2c3e50;    /* Dark ink pencil */
+    --primary: #3498db;       /* Blue pen */
+    --secondary: #95a5a6;     /* Pencil gray */
+    --danger: #e74c3c;        /* Red marker */
+    --accent: #f1c40f;        /* Highlighter yellow */
+    
+    --font-main: 'Patrick Hand', cursive;
+    --font-head: 'Permanent Marker', cursive;
+    
+    --border-width: 2px;
+    --border-color: #2c3e50;
+    --shadow-hard: 3px 3px 0px rgba(44, 62, 80, 0.2);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+    background-size: 20px 20px; /* Dot grid paper effect */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-head);
+    margin-top: 0;
+}
+
+h1 { color: var(--primary); transform: rotate(-1deg); }
+h2 { border-bottom: 2px dashed var(--border-color); display: inline-block; }
+
+.paper-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+    border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px; /* Slightly rough paper shape */
+    position: relative;
+}
+
+/* === HR === */
+.sketch-hr {
+    border: 0;
+    border-bottom: 3px solid var(--text-color);
+    border-radius: 50%; /* Tapered ends */
+    opacity: 0.5;
+    margin: 30px 0;
+    transform: rotate(0.5deg);
+}
+
+/* === BUTTONS === */
+.btn {
+    font-family: var(--font-head);
+    background: white;
+    border: var(--border-width) solid var(--border-color);
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; /* Organic shape */
+    transition: all 0.2s;
+    box-shadow: var(--shadow-hard);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.btn:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 5px 5px 0px rgba(44, 62, 80, 0.3);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.btn-primary { background: var(--primary); color: white; border-color: transparent; }
+.btn-secondary { background: white; color: var(--text-color); }
+.btn-danger { background: var(--danger); color: white; border-color: transparent; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+/* === INPUTS === */
+.input-sketch, textarea.input-sketch, select.input-sketch {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: var(--border-width) solid var(--border-color);
+    background: white;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    border-radius: 255px 5px 225px 5px / 5px 225px 5px 255px;
+    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.05);
+    outline: none;
+}
+.input-sketch:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    transform: scale(1.01);
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* === RADIO & CHECKBOX === */
+/* Hide default */
+.checkbox-container input, .radio-container input { display: none; }
+
+.checkbox-container, .radio-container {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px;
+    user-select: none;
+}
+
+.checkmark, .radiomark {
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--border-color);
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+.checkmark { border-radius: 3px; }
+.radiomark { border-radius: 50%; }
+
+/* Checked State - Draw an X or Fill */
+.checkbox-container input:checked ~ .checkmark::after {
+    content: "X";
+    position: absolute;
+    top: -4px; left: 3px;
+    font-family: var(--font-head);
+    color: var(--danger);
+}
+.radio-container input:checked ~ .radiomark {
+    background: var(--text-color);
+    box-shadow: inset 0 0 0 3px white; /* Donut look */
+}
+
+/* === CARDS === */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 2px;
+    padding: 15px;
+    box-shadow: var(--shadow-hard);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    /* Wiggle effect */
+    animation: wiggle 0.4s ease-in-out;
+}
+
+/* Rotate variations */
+.card-rotate-left { transform: rotate(-2deg); }
+.card-rotate-right { transform: rotate(2deg); }
+.card-rotate-left:hover { transform: rotate(-2deg) scale(1.02); }
+.card-rotate-right:hover { transform: rotate(2deg) scale(1.02); }
+
+.card-img-placeholder {
+    height: 150px;
+    background: #ecf0f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border-color);
+    font-family: var(--font-head);
+    font-size: 2rem;
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
+
+/* === ALERTS & BADGES === */
+.alert {
+    padding: 15px;
+    border: var(--border-width) solid var(--border-color);
+    background: #e8f6f3; /* Light Mint */
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    transform: rotate(-0.5deg);
+}
+.alert-info { border-left-width: 8px; border-left-color: var(--primary); }
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid var(--border-color);
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-right: 5px;
+    background: white;
+}
+.badge-hot { background: #ff7675; color: white; border-color: transparent; transform: rotate(5deg); }
+.badge-dark { background: #2d3436; color: white; border-color: transparent; }
+
+/* === MODAL === */
+.modal-static {
+    background: rgba(0,0,0,0.1); /* Overlay */
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border: 3px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
+    transform: rotate(1deg);
+    padding: 20px;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.close-x {
+    font-family: var(--font-head);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.close-x:hover { color: var(--danger); }
+
+/* === ANIMATIONS === */
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Responsive */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
